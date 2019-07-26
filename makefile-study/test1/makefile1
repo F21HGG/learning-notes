@@ -1,0 +1,32 @@
+#目标文件:依赖文件
+#	指令
+#文件生成类似于递归关系，第一个文件为最终所得
+#
+#目录下包含了main.c add.c divide.c minus.c multiply.c这些源文件
+#
+#rm -rf test *.o
+#伪目标  .PHONY
+
+test:main.o add.o divide.o minus.o multiply.o
+	gcc main.o add.o divide.o minus.o multiply.o -o test
+
+main.o:main.c
+	gcc -c main.c -o main.o
+
+add.o:add.c
+	gcc -c add.c -o add.o
+
+divide.o:divide.c
+	gcc -c divide.c -o divide.o
+
+minus.o:minus.c
+	gcc -c minus.c -o minus.o
+
+multiply.o:multiply.c
+	gcc -c multiply.c -o multiply.o
+
+.PHONY:
+clearall:
+	rm -rf test *.o
+clear:
+	rm -rf *.o 

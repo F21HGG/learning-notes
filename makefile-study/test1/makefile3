@@ -1,0 +1,19 @@
+#第三层：隐含规则   %.c  %.o  即任意的.c和任意的.o   *.c  *.o所有的.c .o
+#	100个.c文件怎么办，使用通配符
+
+TAR = test
+OBJ = main.o add.o divide.o minus.o multiply.o
+CC := gcc
+
+$(TAR):$(OBJ)
+	$(CC) $(OBJ) -o $(TAR)
+
+#这里表示只要有任意 .c就生成对应.o文件
+%.o:%.c
+	$(CC) -c %.c -o %.o
+
+.PHONY:
+clearall:
+	rm -rf test *.o
+clear:
+	rm -rf *.o 

@@ -1,0 +1,29 @@
+#第二层： 变量 = (替换)  +=(追加)  :=(恒等于)
+#使用变量 $(变量名)
+TAR = test
+OBJ = main.o add.o divide.o minus.o multiply.o
+CC := gcc
+
+$(TAR):$(OBJ)
+	$(CC) $(OBJ) -o $(TAR)
+
+main.o:main.c
+	$(CC) -c main.c -o main.o
+
+add.o:add.c
+	$(CC) -c add.c -o add.o
+
+divide.o:divide.c
+	$(CC) -c divide.c -o divide.o
+
+minus.o:minus.c
+	$(CC) -c minus.c -o minus.o
+
+multiply.o:multiply.c
+	$(CC) -c multiply.c -o multiply.o
+
+.PHONY:
+clearall:
+	rm -rf test *.o
+clear:
+	rm -rf *.o 
